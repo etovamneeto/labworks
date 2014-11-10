@@ -12,6 +12,9 @@ double randFunc(double min, double max){
 
 int main(int argc, char **argv){
   
+#ifdef _OPENMP
+printf"Caution: The program was compiled with OpenMP and can consume all CPU resources of your PC!\n");
+#endif
 
 
   //clock_t start = clock();
@@ -44,7 +47,7 @@ int main(int argc, char **argv){
   }
   printf("	Число потоков = %d\n", omp_get_num_threads());
 } 
- 
+
   Pi = 4.0*Ncrc/N;
  
   //clock_t stop = clock();
