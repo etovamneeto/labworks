@@ -1,7 +1,7 @@
 #makefile for this project
 
 #компилятор
-CPP = g++
+CPP = mpicxx
 #Опции компилятора
 CFALGS = -c -O2
 #Опции линкера
