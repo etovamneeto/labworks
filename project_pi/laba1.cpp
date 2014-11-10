@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
-#include <mpi.h>
 #include <stdlib.h>
 
 double randFunc(double min, double max){
@@ -11,8 +10,12 @@ double randFunc(double min, double max){
 }
 
 int main(int argc, char **argv){
+  
+#ifdef _OPENMP
+  printf("Caution: The program was compiled with OpenMP and can consume all CPU resources of your PC!\n");
+#endif
 
-  //clock_t start = clock();
+  clock_t start = clock();
   
   int N = 0;//число точек
   int Ncrc = 0;
@@ -27,20 +30,9 @@ int main(int argc, char **argv){
       if(N < 1)
 	N = 1000;      
   }
-  
-  
-  MPI_Init (&argc, &argv);
-  
-  int nproc, rank;
-  int summ = 0;
-  MPI_Comm comm = MPI_COMM_WORLD;
-  double t = MPI_Wtime();
-  
-  MPI_Comm_size(comm, &nproc);
-  MPI_Comm_rank(comm, &rank);
-  
-  
-  for (int i = rank; i<N; i+=nproc){
+   
+#pragma omp for private(i) nowait
+  for (int i = 0; i < N; i++){
    
     x = randFunc(-(double)radius, (double)radius);
     y = randFunc(-(double)radius, (double)radius);
@@ -49,12 +41,9 @@ int main(int argc, char **argv){
       Ncrc+=1;
    
   }
-
-  printf("Nproc = %d\n", nproc);
-  
-  MPI_Reduce(&Ncrc, &summ, 1, MPI_DOUBLE, MPI_SUM, 0, comm);
-  Pi = 4.0*summ/N;
-/*  
+ 
+  Pi = 4.0*Ncrc/N;
+ 
   clock_t stop = clock();
   
   printf("\n");
@@ -63,17 +52,11 @@ int main(int argc, char **argv){
   }else{    
     printf("	Число PI = %12.9f\n", Pi);
   }
-*/  
+ 
 
   printf("\n");
-  //printf("	Время выполнения программы = %f (сек)\n", (double)(stop-start)/CLOCKS_PER_SEC);
-      if(rank == 0){ 
-      printf("Pi = %12.9f\n", Pi);
-      printf("Time= %15.8g\n", MPI_Wtime()-t);
-    }
+  printf("	Время выполнения программы = %f (сек)\n", (double)(stop-start)/CLOCKS_PER_SEC);
   printf("\n");
-  
-  MPI_Finalize();
-       
+        
   return 0;
 }
