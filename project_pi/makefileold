@@ -3,9 +3,9 @@
 #компилятор
 CPP = g++
 #Опции компилятора
-CFALGS = -c -O2 -fopenmp
+CFALGS = -c -O2
 #Опции линкера
-LFLAGS = -lm -lgomp
+LFLAGS = -lm
 #Список объектных файлов
 OBJS = laba3.o
 
