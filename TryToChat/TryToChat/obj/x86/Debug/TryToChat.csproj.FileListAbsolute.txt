@@ -1,0 +1,8 @@
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\bin\Debug\TryToChat.exe
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\bin\Debug\TryToChat.pdb
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\obj\x86\Debug\TryToChat.Form1.resources
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\obj\x86\Debug\TryToChat.Properties.Resources.resources
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\obj\x86\Debug\TryToChat.csproj.GenerateResource.Cache
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\obj\x86\Debug\TryToChat.exe
+c:\users\lovachev\documents\visual studio 2010\Projects\TryToChat\TryToChat\obj\x86\Debug\TryToChat.pdb
+C:\Users\lovachev\Documents\Visual Studio 2010\Projects\TryToChat\TryToChat\obj\x86\Debug\TryToChat.csprojResolveAssemblyReference.cache
